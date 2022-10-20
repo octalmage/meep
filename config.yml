@@ -1,45 +1,47 @@
+version: 1
+build:
+  proto:
+    path: proto
+    third_party_paths:
+    - third_party/proto
+    - proto_vendor
 accounts:
-  - name: octalmage
-    coins: ["10000000000000umeep"]
-  - name: faucet
-    coins: ["10000000000000umeep"]
-    # address: cosmos10tumxa8rsy4lu5q8x6f73wu4s4j7wpkk4mjwcp
-
-validator:
-  name: octalmage
-  staked: "10000000000000umeep"
+- name: octalmage
+  coins:
+  - 10000000000000umeep
+- name: faucet
+  coins:
+  - 10000000000000umeep
+faucet:
+  name: faucet
+  coins:
+  - 100000000umeep
+  coins_max:
+  - 100000000umeep
 client:
   vuex:
-    path: "vue/src/store"
+    path: vue/src/store
 genesis:
-  chain_id: "meep-1"
   app_state:
-    staking:
-      params:
-        bond_denom: "umeep"
-        max_validators: 5
-    mint:
-      params:
-        mint_denom: "umeep"
-    # crisis:
-    #   constant_fee:
-    #     denom: "meep"
     gov:
-      voting_params: 
-        voting_period: "3600s"
-      tally_params: 
+      deposit_params:
+        max_deposit_period: 3600s
+        min_deposit:
+        - amount: "10000000"
+          denom: umeep
+      tally_params:
         quorum: "0.001000000000000000"
         threshold: "0.01000000000000000"
-      deposit_params:
-        max_deposit_period: "3600s"
-        min_deposit:
-          - amount: "10000000"
-            denom: "umeep" 
-faucet:
-  name: faucet 
-  coins: ["100000000umeep"]
-  coins_max: ["100000000umeep"]
-  host: "159.65.103.150:4500"
-host:
-  rpc: "159.65.103.150:26657"
-  api: "159.65.103.150:1317"
+      voting_params:
+        voting_period: 3600s
+    mint:
+      params:
+        mint_denom: umeep
+    staking:
+      params:
+        bond_denom: umeep
+        max_validators: 5
+  chain_id: meep-1
+validators:
+- name: octalmage
+  bonded: 10000000000000umeep
