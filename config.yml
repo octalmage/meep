@@ -33,5 +33,5 @@ genesis:
         max_validators: 5
   chain_id: meep-1
 validator:
-- name: octalmage
+  name: octalmage
   staked: 10000000000000umeep
