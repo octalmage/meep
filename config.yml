@@ -7,6 +7,7 @@ build:
     - proto_vendor
 accounts:
 - name: octalmage
+  address: meep1foiwoefjweofjwoeifj
   coins:
   - 10000000000000umeep
 - name: faucet
@@ -23,17 +24,6 @@ client:
     path: vue/src/store
 genesis:
   app_state:
-    gov:
-      deposit_params:
-        max_deposit_period: 3600s
-        min_deposit:
-        - amount: "10000000"
-          denom: umeep
-      tally_params:
-        quorum: "0.001000000000000000"
-        threshold: "0.01000000000000000"
-      voting_params:
-        voting_period: 3600s
     mint:
       params:
         mint_denom: umeep
@@ -42,6 +32,6 @@ genesis:
         bond_denom: umeep
         max_validators: 5
   chain_id: meep-1
-validators:
+validator:
 - name: octalmage
-  bonded: 10000000000000umeep
+  staked: 10000000000000umeep
